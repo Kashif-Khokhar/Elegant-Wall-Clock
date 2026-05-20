@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;600;700;900&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+  }
+}
+
+/* Custom Animation for Glassmorphic Moving Background Blobs */
+@keyframes blob-float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 40px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob-1 {
+  animation: blob-float 15s infinite alternate ease-in-out;
+}
+
+.animate-blob-2 {
+  animation: blob-float 20s infinite alternate-reverse ease-in-out 3s;
+}
+
+.animate-blob-3 {
+  animation: blob-float 18s infinite alternate ease-in-out 6s;
+}
+
+/* Cyberpunk Neon Glow Custom Properties */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(6, 182, 212, 0.4), 0 0 12px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.8), 0 0 20px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.2);
+  }
+}
+
+.cyberpunk-glow {
+  animation: neon-pulse 3s infinite ease-in-out;
+}
+
+/* Custom Neumorphism Shadows */
+.shadow-neumorphic-out {
+  box-shadow: 16px 16px 36px #bec3c9, 
+             -16px -16px 36px #ffffff;
+}
+
+.shadow-neumorphic-in {
+  box-shadow: inset 8px 8px 16px #bec3c9, 
+             inset -8px -8px 16px #ffffff;
+}
+
+.shadow-neumorphic-out-dark {
+  box-shadow: 12px 12px 28px #0f1013, 
+             -12px -12px 28px #2b2f38;
+}
+
+.shadow-neumorphic-in-dark {
+  box-shadow: inset 8px 8px 16px #0f1013, 
+             inset -8px -8px 16px #2b2f38;
+}
