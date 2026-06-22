@@ -1,15 +1,16 @@
 # Elegant Wall Clock
 
-A modern React + TypeScript + Vite app showcasing an elegant wall clock with dynamic time and timezone controls.
+A polished React + TypeScript + Vite application featuring a customizable analog wall clock, timezone-aware digital display, alarm scheduler, and animated theme-driven styling.
 
 ## Features
 
-- Responsive analog clock with smooth hand animation
-- Digital time display
-- Timezone selection from a curated list
-- Theme switching and visual styling modes
-- Alarm support with timezone-aware scheduling
-- Background images that update with selected location
+- Smooth analog clock with sweep seconds and accurate hour/minute hand movement
+- Configurable theme modes: neumorphism, glassmorphism, cyberpunk, and luxury
+- Local and global timezone selection with dynamic background imagery
+- Alarm scheduling tied to the selected timezone
+- Soft Web Audio chime preview and alarm sound playback
+- Searchable worldwide timezone selector for quick location lookup
+- Responsive UI optimized for desktop and larger screens
 
 ## Getting Started
 
@@ -37,13 +38,27 @@ npm run build
 npm run preview
 ```
 
+### Lint project
+
+```bash
+npm run lint
+```
+
 ## Project Structure
 
-- `src/App.tsx` — main application shell and layout
-- `src/components/Clock.tsx` — analog clock UI and hands
-- `src/components/Controls.tsx` — timezone, theme, and alarm controls
-- `src/utils/timezones.ts` — timezone data and background image mappings
+- `src/App.tsx` — application state, animation loop, background transitions, and alarm logic
+- `src/components/Clock.tsx` — styled analog clock face, hands, and theme variants
+- `src/components/Controls.tsx` — theme selection, timezone controls, alarm settings, and search input
+- `src/utils/timezones.ts` — timezone definitions, display metadata, and background mapping
+
+## Stack
+
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS (utility classes)
+- ESLint
 
 ## Notes
 
-This project is built with Vite, React, and TypeScript. It uses Tailwind-style utility classes for styling and is optimized for a polished, interactive clock experience.
+The app uses `requestAnimationFrame` for smooth clock updates and the Web Audio API to generate gentle chime tones. Backgrounds adapt to the selected timezone using curated city/country imagery and dynamic image queries.
