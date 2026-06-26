@@ -5,11 +5,10 @@ A polished React + TypeScript + Vite application featuring a customizable analog
 ## Features
 
 - Smooth analog clock with sweep seconds and accurate hour/minute hand movement
-- Configurable theme modes: neumorphism, glassmorphism, cyberpunk, and luxury
-- Local and global timezone selection with dynamic background imagery
+- Configurable theme modes with polished visual styles
+- Local and global timezone selection with dynamic backgrounds
 - Alarm scheduling tied to the selected timezone
-- Soft Web Audio chime preview and alarm sound playback
-- Searchable worldwide timezone selector for quick location lookup
+- Searchable timezone selector for quick location lookup
 - Responsive UI optimized for desktop and larger screens
 
 ## Getting Started
@@ -46,19 +45,22 @@ npm run lint
 
 ## Project Structure
 
-- `src/App.tsx` — application state, animation loop, background transitions, and alarm logic
-- `src/components/Clock.tsx` — styled analog clock face, hands, and theme variants
-- `src/components/Controls.tsx` — theme selection, timezone controls, alarm settings, and search input
-- `src/utils/timezones.ts` — timezone definitions, display metadata, and background mapping
+- `src/App.tsx` — application state, clock update loop, background transitions, and alarm logic
+- `src/components/Clock.tsx` — analog clock face, hands, and theme styling
+- `src/components/Controls.tsx` — theme selection, timezone controls, alarm configuration, and search
+- `src/utils/timezones.ts` — timezone definitions, labels, and metadata
 
 ## Stack
 
 - React 19
 - TypeScript
 - Vite
-- Tailwind CSS (utility classes)
+- Tailwind CSS
 - ESLint
 
-## Notes
+## Scripts
 
-The app uses `requestAnimationFrame` for smooth clock updates and the Web Audio API to generate gentle chime tones. Backgrounds adapt to the selected timezone using curated city/country imagery and dynamic image queries.
+- `npm run dev` — start development server
+- `npm run build` — build production output
+- `npm run preview` — preview the production build locally
+- `npm run lint` — run ESLint across the project
