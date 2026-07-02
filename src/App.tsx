@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Clock } from './components/Clock';
 import { Controls } from './components/Controls';
 import { Clock as ClockIcon } from 'lucide-react';
-import { worldwideTimezones, countryBgs } from './utils/timezones';
+import { worldwideTimezones, DEFAULT_BG, resolveCapitalBg } from './utils/timezones';
 
 type ThemeType = 'neumorphism' | 'glassmorphism' | 'cyberpunk' | 'luxury';
 
@@ -16,45 +16,33 @@ function App() {
   const [alarmEnabled, setAlarmEnabled] = useState(false);
   const [isAlarmActive, setIsAlarmActive] = useState(false);
 
-  // Compute active background image according to selected zone
-  const activeBg = (() => {
-    if (timezone === 'local') return countryBgs['default'];
-    
-    const found = worldwideTimezones.find(tz => tz.value === timezone);
-    
-    if (found) {
-      // 1. Check curated premium capital city backgrounds first
-      if (countryBgs[found.country]) {
-        return countryBgs[found.country];
-      }
-      
-      // 2. Generate dynamic city/capital featured backdrop for other zones
-      // Split names like "Mumbai / New Delhi" to search for the specific city
-      const cleanCityName = found.name.split('/').pop()?.trim() || found.name;
-      const cleanQuery = `${cleanCityName.toLowerCase().replace(/\s+/g, '-')},${found.country.toLowerCase().replace(/\s+/g, '-')},skyline`;
-      return `https://images.unsplash.com/featured/1920x1080/?${cleanQuery}`;
-    }
-    
-    return countryBgs['default'];
-  })();
-
   // Background cross-dissolve states
-  const [currentBg, setCurrentBg] = useState(activeBg);
-  const [prevBg, setPrevBg] = useState(activeBg);
+  const [currentBg, setCurrentBg] = useState(DEFAULT_BG);
+  const [prevBg, setPrevBg] = useState(DEFAULT_BG);
   const [bgOpacity, setBgOpacity] = useState(1);
+  const currentBgRef = useRef(currentBg);
+  currentBgRef.current = currentBg;
 
-  // Trigger background cross-dissolve fade when activeBg changes
+  // Core logic: whichever country is selected, resolve and cross-fade to a photo of that
+  // country's capital city (see resolveCapitalBg in utils/timezones.ts).
   useEffect(() => {
-    if (activeBg !== currentBg) {
-      setPrevBg(currentBg);
-      setCurrentBg(activeBg);
+    let cancelled = false;
+    const country = timezone === 'local'
+      ? undefined
+      : worldwideTimezones.find(tz => tz.value === timezone)?.country;
+
+    (timezone === 'local' ? Promise.resolve(DEFAULT_BG) : resolveCapitalBg(country)).then(bg => {
+      if (cancelled || bg === currentBgRef.current) return;
+      setPrevBg(currentBgRef.current);
+      setCurrentBg(bg);
       setBgOpacity(0);
-      const timeout = setTimeout(() => {
-        setBgOpacity(1);
+      setTimeout(() => {
+        if (!cancelled) setBgOpacity(1);
       }, 50);
-      return () => clearTimeout(timeout);
-    }
-  }, [activeBg, currentBg]);
+    });
+
+    return () => { cancelled = true; };
+  }, [timezone]);
 
   // Degrees state
   const [hourDeg, setHourDeg] = useState(0);

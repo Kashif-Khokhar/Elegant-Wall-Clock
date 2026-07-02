@@ -153,46 +153,153 @@ export const worldwideTimezones: WorldwideTimeZone[] = [
   { name: 'Nuuk', country: 'Greenland', value: 'America/Nuuk', aliases: ['greenland'] }
 ];
 
-export const countryBgs: Record<string, string> = {
-  'default': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop',
-  'Pakistan': 'https://images.unsplash.com/photo-1627915591243-dbe6b4f74d08?q=80&w=1920&auto=format&fit=crop',
-  'Saudi Arabia': 'https://images.unsplash.com/photo-1586724230073-50950b8c7ae2?q=80&w=1920&auto=format&fit=crop',
-  'United Arab Emirates': 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1920&auto=format&fit=crop',
-  'United Kingdom': 'https://images.unsplash.com/photo-1513635269975-59663e0ca1ad?q=80&w=1920&auto=format&fit=crop',
-  'United States': 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1920&auto=format&fit=crop',
-  'Japan': 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1920&auto=format&fit=crop',
-  'Australia': 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=1920&auto=format&fit=crop',
-  'France': 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1920&auto=format&fit=crop',
-  'Germany': 'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?q=80&w=1920&auto=format&fit=crop',
-  'Egypt': 'https://images.unsplash.com/photo-1503177119275-0aa32b31d468?q=80&w=1920&auto=format&fit=crop',
-  'Russia': 'https://images.unsplash.com/photo-1512495039889-52a3b799c9bc?q=80&w=1920&auto=format&fit=crop',
-  'Singapore': 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1920&auto=format&fit=crop',
-  'Canada': 'https://images.unsplash.com/photo-1485081661445-51c367f2e67d?q=80&w=1920&auto=format&fit=crop',
-  'Brazil': 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1920&auto=format&fit=crop',
-  'China': 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1920&auto=format&fit=crop',
-  'South Korea': 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1920&auto=format&fit=crop',
-  'India': 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1920&auto=format&fit=crop',
-  'Italy': 'https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?q=80&w=1920&auto=format&fit=crop',
-  'Spain': 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?q=80&w=1920&auto=format&fit=crop',
-  'Switzerland': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1920&auto=format&fit=crop',
-  'Netherlands': 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1920&auto=format&fit=crop',
-  'Turkey': 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=1920&auto=format&fit=crop',
-  'Mexico': 'https://images.unsplash.com/photo-1512813583145-baaa340ef29f?q=80&w=1920&auto=format&fit=crop',
-  'Thailand': 'https://images.unsplash.com/photo-1528181304800-2f12585c83e7?q=80&w=1920&auto=format&fit=crop',
-  'Malaysia': 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1920&auto=format&fit=crop',
-  'Indonesia': 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1920&auto=format&fit=crop',
-  'Vietnam': 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1920&auto=format&fit=crop',
-  'Philippines': 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=1920&auto=format&fit=crop',
-  'South Africa': 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1920&auto=format&fit=crop',
-  'New Zealand': 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1920&auto=format&fit=crop',
-  'Maldives': 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=1920&auto=format&fit=crop',
+// Fallback backdrop shown until a country's capital-city image has loaded (or if it fails to load).
+export const DEFAULT_BG = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop';
 
-  // Regional/Generic Fallbacks for All Other Countries
-  'middle-east': 'https://images.unsplash.com/photo-1547989453-11e67ffb3885?q=80&w=1920&auto=format&fit=crop',
-  'europe': 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1920&auto=format&fit=crop',
-  'asia': 'https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=1920&auto=format&fit=crop',
-  'africa': 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1920&auto=format&fit=crop',
-  'latin-america': 'https://images.unsplash.com/photo-1585464231473-d36d1b294aa9?q=80&w=1920&auto=format&fit=crop',
-  'pacific': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop',
+// Core logic: every country resolves to ONE background — a photo of its capital city.
+// Maps each `country` value used in `worldwideTimezones` to its capital's Wikipedia article
+// title, which is used to fetch a real photo of that capital at runtime (see resolveCapitalBg).
+export const countryCapitals: Record<string, string> = {
+  'Saudi Arabia': 'Riyadh',
+  'United Arab Emirates': 'Abu Dhabi',
+  'Qatar': 'Doha',
+  'Kuwait': 'Kuwait City',
+  'Oman': 'Muscat',
+  'Bahrain': 'Manama',
+  'Israel': 'Jerusalem',
+  'Jordan': 'Amman',
+  'Lebanon': 'Beirut',
+  'Syria': 'Damascus',
+  'Iraq': 'Baghdad',
+  'Iran': 'Tehran',
+  'India': 'New Delhi',
+  'Pakistan': 'Islamabad',
+  'Bangladesh': 'Dhaka',
+  'Sri Lanka': 'Colombo',
+  'Nepal': 'Kathmandu',
+  'Afghanistan': 'Kabul',
+  'Japan': 'Tokyo',
+  'South Korea': 'Seoul',
+  'China': 'Beijing',
+  'Hong Kong (China)': 'Hong Kong',
+  'Taiwan': 'Taipei',
+  'Mongolia': 'Ulaanbaatar',
+  'Singapore': 'Singapore',
+  'Malaysia': 'Kuala Lumpur',
+  'Thailand': 'Bangkok',
+  'Indonesia': 'Jakarta',
+  'Vietnam': 'Hanoi',
+  'Philippines': 'Manila',
+  'Uzbekistan': 'Tashkent',
+  'Kazakhstan': 'Astana',
+  'United Kingdom': 'London',
+  'France': 'Paris',
+  'Germany': 'Berlin',
+  'Italy': 'Rome',
+  'Spain': 'Madrid',
+  'Portugal': 'Lisbon',
+  'Belgium': 'Brussels',
+  'Netherlands': 'Amsterdam',
+  'Switzerland': 'Bern',
+  'Austria': 'Vienna',
+  'Greece': 'Athens',
+  'Russia': 'Moscow',
+  'Ukraine': 'Kyiv',
+  'Poland': 'Warsaw',
+  'Czech Republic': 'Prague',
+  'Hungary': 'Budapest',
+  'Romania': 'Bucharest',
+  'Sweden': 'Stockholm',
+  'Norway': 'Oslo',
+  'Denmark': 'Copenhagen',
+  'Finland': 'Helsinki',
+  'Ireland': 'Dublin',
+  'Iceland': 'Reykjavik',
+  'Turkey': 'Ankara',
+  'United States': 'Washington, D.C.',
+  'Canada': 'Ottawa',
+  'Mexico': 'Mexico City',
+  'Colombia': 'Bogotá',
+  'Peru': 'Lima',
+  'Chile': 'Santiago',
+  'Brazil': 'Brasília',
+  'Argentina': 'Buenos Aires',
+  'Venezuela': 'Caracas',
+  'Bolivia': 'La Paz',
+  'Paraguay': 'Asunción',
+  'Uruguay': 'Montevideo',
+  'Panama': 'Panama City',
+  'Costa Rica': 'San José, Costa Rica',
+  'Cuba': 'Havana',
+  'Jamaica': 'Kingston, Jamaica',
+  'Dominican Republic': 'Santo Domingo',
+  'Puerto Rico': 'San Juan, Puerto Rico',
+  'Bahamas': 'Nassau, Bahamas',
+  'Ecuador': 'Quito',
+  'Egypt': 'Cairo',
+  'South Africa': 'Pretoria',
+  'Kenya': 'Nairobi',
+  'Nigeria': 'Abuja',
+  'Morocco': 'Rabat',
+  'Algeria': 'Algiers',
+  'Tunisia': 'Tunis',
+  'Libya': 'Tripoli',
+  'Ethiopia': 'Addis Ababa',
+  'Tanzania': 'Dodoma',
+  'Uganda': 'Kampala',
+  'Ghana': 'Accra',
+  'Senegal': 'Dakar',
+  'Ivory Coast': 'Yamoussoukro',
+  'Angola': 'Luanda',
+  'Sudan': 'Khartoum',
+  'Zimbabwe': 'Harare',
+  'Zambia': 'Lusaka',
+  'Cameroon': 'Yaoundé',
+  'Madagascar': 'Antananarivo',
+  'Australia': 'Canberra',
+  'New Zealand': 'Wellington',
+  'Fiji': 'Suva',
+  'Tahiti': 'Papeete',
+  'Samoa': 'Apia',
+  'Mauritius': 'Port Louis',
+  'Maldives': 'Malé',
+  'Seychelles': 'Victoria, Seychelles',
+  'Guam': 'Hagåtña, Guam',
+  'Greenland': 'Nuuk',
 };
+
+// In-memory cache so each capital's photo is only ever fetched once per session.
+const capitalBgCache = new Map<string, string>();
+
+// Bumps a Wikimedia thumbnail URL up to a wallpaper-friendly width.
+function upscaleThumbnail(url: string): string {
+  return url.replace(/\/\d+px-/, '/1920px-');
+}
+
+// One core logic for every country: resolve its capital city, fetch a real photo of that
+// capital from Wikipedia, and fall back to DEFAULT_BG if the capital is unknown or the
+// fetch fails. Results are cached per capital for the lifetime of the session.
+export async function resolveCapitalBg(country: string | undefined): Promise<string> {
+  if (!country) return DEFAULT_BG;
+
+  const capital = countryCapitals[country];
+  if (!capital) return DEFAULT_BG;
+
+  const cached = capitalBgCache.get(capital);
+  if (cached) return cached;
+
+  try {
+    const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(capital)}`);
+    if (!res.ok) return DEFAULT_BG;
+    const data = await res.json();
+    const source: string | undefined = data?.originalimage?.source || data?.thumbnail?.source;
+    if (!source) return DEFAULT_BG;
+
+    const bg = upscaleThumbnail(source);
+    capitalBgCache.set(capital, bg);
+    return bg;
+  } catch {
+    return DEFAULT_BG;
+  }
+}
 
